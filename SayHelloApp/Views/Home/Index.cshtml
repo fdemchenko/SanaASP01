@@ -19,7 +19,7 @@
 </form>
 
 
-@if (!(Model.Name is null))
+@if (Model.Name is not null)
 {
     <h1 class="text-center">Hello, @Model.Name</h1>
 }
