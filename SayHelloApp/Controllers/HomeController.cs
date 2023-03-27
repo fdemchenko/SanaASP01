@@ -15,13 +15,14 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View(new InputName());
+        return View(new InputName { Name = TempData["Name"] as string});
     }
 
     [HttpPost]
     public IActionResult NewName(InputName inputName) 
     {
-        return View(nameof(Index), inputName);
+        TempData["Name"] = inputName.Name;
+        return RedirectToAction(nameof(Index));
     }
 
 
