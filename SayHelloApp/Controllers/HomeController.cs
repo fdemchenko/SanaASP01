@@ -7,7 +7,6 @@ namespace SayHelloApp.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private static InputName _inputName = new InputName();
 
     public HomeController(ILogger<HomeController> logger)
     {
@@ -16,14 +15,13 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View(_inputName);
+        return View(new InputName());
     }
 
     [HttpPost]
     public IActionResult NewName(InputName inputName) 
     {
-        _inputName = inputName;
-        return RedirectToAction(nameof(Index));
+        return View(nameof(Index), inputName);
     }
 
 
